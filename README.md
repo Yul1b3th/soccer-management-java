@@ -48,8 +48,10 @@ soccer/
 │   │   ├── MenuOption.java
 │   │   └── UserInterface.java
 │   │
-│   ├── Player.java
-│   ├── Team.java
+│   ├── model/
+│   │   ├── Player.java
+│   │   └── Team.java
+│   │
 │   └── Main.java
 │
 └── README.md

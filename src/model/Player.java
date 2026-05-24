@@ -23,12 +23,4 @@ public class Player {
     public int getNumber() {
         return number;
     }
-
-    public void updateName(String name) {
-        this.name = name;
-    }
-
-    public void updateNumber(int number) {
-        this.number = number;
-    }
 }

@@ -1,6 +1,17 @@
 package presentation;
 
+import model.Player;
+import model.Team;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Controller {
+    private List<Player> players = new ArrayList<>();
+    private List<Team> teams = new ArrayList<>();
+
+    private int playerIdCounter = 1;
+    private int teamIdCounter = 1;
 
     private final UserInterface ui = new UserInterface();
     private boolean running = true;
@@ -21,11 +32,11 @@ public class Controller {
         switch (option) {
 
             case 1:
-                ui.showMessage("Add Player selected");
+                createPlayer();
                 break;
 
             case 2:
-                ui.showMessage("Show Players selected");
+                showPlayers();
                 break;
 
             case 3:
@@ -37,11 +48,11 @@ public class Controller {
                 break;
 
             case 5:
-                ui.showMessage("Add Team selected");
+                createTeam();
                 break;
 
             case 6:
-                ui.showMessage("Show Teams selected");
+                showTeams();
                 break;
 
             case 7:
@@ -53,4 +64,55 @@ public class Controller {
                 ui.showMessage("Invalid option");
         }
     }
+
+    private void createPlayer() {
+
+        String name = ui.askString("Player name: ");
+        int number = ui.askInt("Player number: ");
+
+        Player player = new Player(playerIdCounter++, name, number);
+        players.add(player);
+
+        ui.showMessage("Player created");
+    }
+
+    private void showPlayers() {
+
+        if (players.isEmpty()) {
+            ui.showMessage("No players");
+            return;
+        }
+
+        for (Player p : players) {
+            ui.showMessage(p.getId() + " - " + p.getName() + " (" + p.getNumber() + ")");
+        }
+    }
+
+    private void createTeam() {
+
+        String name = ui.askString("Team name: ");
+
+        Team team = new Team(teamIdCounter++, name);
+        teams.add(team);
+
+        ui.showMessage("Team created");
+    }
+
+    private void showTeams() {
+
+        if (teams.isEmpty()) {
+            ui.showMessage("No teams");
+            return;
+        }
+
+        for (Team t : teams) {
+
+            ui.showMessage("Team: " + t.getName());
+
+            for (Player p : t.getPlayers()) {
+                ui.showMessage("  - " + p.getName());
+            }
+        }
+    }
+
 }

@@ -27,15 +27,7 @@ public class Team {
         return players;
     }
 
-    public void updateName(String name) {
-        this.name = name;
-    }
-
     public void addPlayer(Player player) {
         players.add(player);
-    }
-
-    public void removePlayer(Player player) {
-        players.remove(player);
     }
 }

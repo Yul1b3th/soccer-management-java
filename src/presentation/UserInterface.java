@@ -25,4 +25,14 @@ public class UserInterface {
     public void showMessage(String message) {
         System.out.println(message);
     }
+
+    public String askString(String message) {
+        System.out.print(message);
+        return scanner.next();
+    }
+
+    public int askInt(String message) {
+        System.out.print(message);
+        return scanner.nextInt();
+    }
 }
